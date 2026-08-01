@@ -6,7 +6,7 @@ const rates = [
   { title: 'Jodi Digit', value: '10 - 960', icon: '✦' },
 ];
 
-function RatesSection() {
+function RatesSection({ onRequireSignup }) {
   return (
     <section id="rates" className="section-container">
       <Reveal>
@@ -26,11 +26,11 @@ function RatesSection() {
       <div className="rates-grid">
         {rates.map((rate, index) => (
           <Reveal key={rate.title} delay={index * 120}>
-            <div className="rate-card">
+            <button className="rate-card" type="button" onClick={onRequireSignup}>
               <span className="rate-icon">{rate.icon}</span>
               <span className="rate-title">{rate.title}</span>
               <span className="rate-value">{rate.value}</span>
-            </div>
+            </button>
           </Reveal>
         ))}
       </div>

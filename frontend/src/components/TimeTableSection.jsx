@@ -21,26 +21,10 @@ function useClock() {
   return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 }
 
-function TimeTableSection({ marketData, onOpenChart }) {
+function TimeTableSection({ marketData, onRequireSignup }) {
   const clock = useClock();
-  const [rows, setRows] = useState(marketData);
-  const [refreshing, setRefreshing] = useState(false);
 
-  const handleRefresh = () => {
-    if (refreshing) return;
-    setRefreshing(true);
-
-    window.setTimeout(() => {
-      setRows((prev) =>
-        prev.map((row) =>
-          row.status === 'pending'
-            ? { ...row, result: String(Math.floor(Math.random() * 90) + 10), status: 'live' }
-            : row
-        )
-      );
-      setRefreshing(false);
-    }, 800);
-  };
+  const handleRefresh = () => onRequireSignup();
 
   return (
     <section id="timetable" className="section-container">
@@ -60,15 +44,10 @@ function TimeTableSection({ marketData, onOpenChart }) {
               <span className="live-dot" />
               {clock}
             </div>
-            <button
-              className="btn btn-ghost"
-              type="button"
-              onClick={handleRefresh}
-              disabled={refreshing}
-            >
-              {refreshing ? 'Refreshing...' : 'Refresh Results'}
+            <button className="btn btn-ghost" type="button" onClick={handleRefresh}>
+              Refresh Results
             </button>
-            <button className="btn btn-outline" type="button" onClick={onOpenChart}>
+            <button className="btn btn-outline" type="button" onClick={onRequireSignup}>
               View Analytics
             </button>
           </div>
@@ -88,7 +67,7 @@ function TimeTableSection({ marketData, onOpenChart }) {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row) => (
+                {marketData.map((row) => (
                   <tr key={row.name}>
                     <td>
                       <span className="market-name">

@@ -38,7 +38,7 @@ function CountUp({ target, duration = 1800 }) {
   return <span ref={ref}>{value.toLocaleString()}+</span>;
 }
 
-function HeroSection({ onDownload, onOpenChart, isDownloading, downloadProgress, downloadLabel }) {
+function HeroSection({ onDownload, onRequireSignup, isDownloading, downloadProgress, downloadLabel }) {
   return (
     <section className="hero-section" id="home">
       <div className="hero-orb one" />
@@ -75,17 +75,12 @@ function HeroSection({ onDownload, onOpenChart, isDownloading, downloadProgress,
                 style={{ width: `${downloadProgress}%` }}
               />
             </button>
-            <button className="btn btn-outline" onClick={onOpenChart} type="button">
+            <button className="btn btn-outline" onClick={onRequireSignup} type="button">
               Play Online
             </button>
-            <a
-              href="https://wa.me/7880223499"
-              className="btn btn-whatsapp"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <button className="btn btn-whatsapp" onClick={onRequireSignup} type="button">
               WhatsApp
-            </a>
+            </button>
           </div>
         </Reveal>
 

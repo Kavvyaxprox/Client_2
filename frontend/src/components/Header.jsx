@@ -8,7 +8,7 @@ const navItems = [
   { href: '#faq', label: 'FAQ' },
 ];
 
-function Header({ menuOpen, onMenuToggle, onNavLinkClick, onPlay }) {
+function Header({ menuOpen, onMenuToggle, onNavLinkClick, onRequireSignup }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('#home');
 
@@ -74,7 +74,7 @@ function Header({ menuOpen, onMenuToggle, onNavLinkClick, onPlay }) {
             className="btn btn-outline nav-cta"
             onClick={() => {
               onNavLinkClick();
-              onPlay?.();
+              onRequireSignup();
             }}
           >
             Play Now

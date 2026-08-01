@@ -708,6 +708,8 @@ body::after {
 
 .rate-card {
   position: relative;
+  width: 100%;
+  color: inherit;
   overflow: hidden;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -1072,6 +1074,190 @@ body::after {
   height: 180px;
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+/* ============================================================
+   SIGNUP MODAL
+   ============================================================ */
+.signup-modal {
+  position: relative;
+  max-width: 440px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.signup-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+}
+
+.signup-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+}
+
+.signup-head {
+  padding: 1.6rem 1.6rem 0;
+  text-align: center;
+}
+
+.signup-brand {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin-bottom: 0.5rem;
+}
+
+.signup-head h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.signup-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.signup-benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.1rem 1.6rem 0;
+}
+
+.signup-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.signup-tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-strong);
+  color: var(--accent-bright);
+  font-size: 0.68rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.3rem 1.6rem 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-dim);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-error {
+  font-size: 0.82rem;
+  color: var(--danger);
+}
+
+.signup-submit {
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+.signup-note {
+  padding: 0.9rem 1.6rem 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.signup-note a {
+  color: var(--accent-bright);
+}
+
+.signup-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.7rem;
+  padding: 3rem 1.6rem;
+}
+
+.signup-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #04110b;
+  font-size: 1.7rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-accent);
+  animation: pop-check 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes pop-check {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.signup-success h3 {
+  font-size: 1.4rem;
+}
+
+.signup-success p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  max-width: 280px;
 }
 
 /* ============================================================

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import ChartModal from './components/ChartModal';
 import FaqSection from './components/FaqSection';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import HowToPlaySection from './components/HowToPlaySection';
 import RatesSection from './components/RatesSection';
+import SignupModal from './components/SignupModal';
 import TimeTableSection from './components/TimeTableSection';
 import Ticker from './components/Ticker';
 
@@ -23,20 +23,8 @@ function App() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [downloadLabel, setDownloadLabel] = useState('Download App');
-  const [isChartOpen, setIsChartOpen] = useState(false);
-  const [chartText, setChartText] = useState('Connecting to Secure Real-Time Data Feed...');
+  const [isSignupOpen, setIsSignupOpen] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    if (!isChartOpen) return;
-
-    const timer = window.setTimeout(() => {
-      const randomVal = Math.floor(Math.random() * 90) + 10;
-      setChartText(`Live Market Trend Value: ${randomVal}`);
-    }, 1200);
-
-    return () => window.clearTimeout(timer);
-  }, [isChartOpen]);
 
   useEffect(() => {
     const onScroll = () => setShowBackToTop(window.scrollY > 480);
@@ -46,6 +34,8 @@ function App() {
 
   const handleMenuToggle = () => setMenuOpen((prev) => !prev);
   const handleNavLinkClick = () => setMenuOpen(false);
+
+  const openSignup = () => setIsSignupOpen(true);
 
   const handleDownload = () => {
     if (isDownloading) return;
@@ -82,30 +72,25 @@ function App() {
     document.body.removeChild(anchor);
   };
 
-  const handleOpenChart = () => {
-    setIsChartOpen(true);
-    setChartText('Connecting to Secure Real-Time Data Feed...');
-  };
-
   return (
     <>
       <Header
         menuOpen={menuOpen}
         onMenuToggle={handleMenuToggle}
         onNavLinkClick={handleNavLinkClick}
-        onPlay={handleOpenChart}
+        onRequireSignup={openSignup}
       />
       <main>
         <HeroSection
           onDownload={handleDownload}
-          onOpenChart={handleOpenChart}
+          onRequireSignup={openSignup}
           isDownloading={isDownloading}
           downloadProgress={downloadProgress}
           downloadLabel={downloadLabel}
         />
         <Ticker marketData={marketData} />
-        <TimeTableSection marketData={marketData} onOpenChart={handleOpenChart} />
-        <RatesSection />
+        <TimeTableSection marketData={marketData} onRequireSignup={openSignup} />
+        <RatesSection onRequireSignup={openSignup} />
         <HowToPlaySection />
         <FaqSection />
       </main>
@@ -126,7 +111,7 @@ function App() {
           <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
       </button>
-      <ChartModal isOpen={isChartOpen} onClose={() => setIsChartOpen(false)} chartText={chartText} />
+      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </>
   );
 }
