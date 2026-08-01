@@ -1,0 +1,99 @@
+:root {
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --bg-primary: #070c0a;
+  --bg-secondary: #0c1410;
+  --bg-tertiary: #101a15;
+  --surface: #131f19;
+  --surface-hover: #182820;
+  --border-color: rgba(52, 211, 153, 0.14);
+  --border-strong: rgba(52, 211, 153, 0.3);
+
+  --accent: #10b981;
+  --accent-bright: #34d399;
+  --accent-hover: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.35);
+  --accent-soft: rgba(16, 185, 129, 0.12);
+  --accent-gradient: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+
+  --text-primary: #f1f7f4;
+  --text-muted: #93a59c;
+  --text-dim: #5d6e66;
+
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 40px var(--accent-glow);
+  --shadow-accent: 0 8px 28px rgba(16, 185, 129, 0.35);
+  --shadow-accent-sm: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .brand-logo {
+  font-family: var(--font-heading);
+}
+
+body, button, a {
+  font-family: var(--font-body);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: #04110b;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2c25;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3d33;
+}
