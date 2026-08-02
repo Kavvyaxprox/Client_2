@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import AnalyticsPage from './components/AnalyticsPage';
 import FaqSection from './components/FaqSection';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
@@ -25,6 +26,7 @@ function App() {
   const [downloadLabel, setDownloadLabel] = useState('Download App');
   const [isSignupOpen, setIsSignupOpen] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [page, setPage] = useState('home');
 
   useEffect(() => {
     const onScroll = () => setShowBackToTop(window.scrollY > 480);
@@ -36,6 +38,16 @@ function App() {
   const handleNavLinkClick = () => setMenuOpen(false);
 
   const openSignup = () => setIsSignupOpen(true);
+
+  const openAnalytics = () => {
+    setPage('analytics');
+    window.scrollTo({ top: 0 });
+  };
+
+  const goHome = () => {
+    setPage('home');
+    window.scrollTo({ top: 0 });
+  };
 
   const handleDownload = () => {
     if (isDownloading) return;
@@ -72,6 +84,15 @@ function App() {
     document.body.removeChild(anchor);
   };
 
+  if (page === 'analytics') {
+    return (
+      <>
+        <AnalyticsPage onBackHome={goHome} />
+        <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
+      </>
+    );
+  }
+
   return (
     <>
       <Header
@@ -89,7 +110,11 @@ function App() {
           downloadLabel={downloadLabel}
         />
         <Ticker marketData={marketData} />
-        <TimeTableSection marketData={marketData} onRequireSignup={openSignup} />
+        <TimeTableSection
+          marketData={marketData}
+          onRequireSignup={openSignup}
+          onViewAnalytics={openAnalytics}
+        />
         <RatesSection onRequireSignup={openSignup} />
         <HowToPlaySection />
         <FaqSection />

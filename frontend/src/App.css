@@ -1451,3 +1451,45 @@ body::after {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* ============================================================
+   ANALYTICS PAGE
+   ============================================================ */
+.analytics-page {
+  min-height: 100vh;
+}
+
+.analytics-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(7, 12, 10, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.analytics-brand {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.35rem;
+}
+
+.analytics-table {
+  min-width: 720px;
+}
+
+.analytics-table .analytics-date {
+  font-weight: 600;
+  color: var(--accent-bright);
+}
+
+.analytics-table .analytics-cell {
+  text-align: center;
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+

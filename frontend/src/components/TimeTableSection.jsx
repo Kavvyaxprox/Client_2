@@ -21,7 +21,7 @@ function useClock() {
   return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 }
 
-function TimeTableSection({ marketData, onRequireSignup }) {
+function TimeTableSection({ marketData, onRequireSignup, onViewAnalytics }) {
   const clock = useClock();
 
   const handleRefresh = () => onRequireSignup();
@@ -47,7 +47,7 @@ function TimeTableSection({ marketData, onRequireSignup }) {
             <button className="btn btn-ghost" type="button" onClick={handleRefresh}>
               Refresh Results
             </button>
-            <button className="btn btn-outline" type="button" onClick={onRequireSignup}>
+            <button className="btn btn-outline" type="button" onClick={onViewAnalytics}>
               View Analytics
             </button>
           </div>
